@@ -1,7 +1,12 @@
-html, body {
+:root {
+    --mouse-x: .7;
+    --mouse-y: .23;
+}
+
+body {
     margin: 0;
     height: 100vh;
-    background: rgb(0,0,0);
+    width: 100vw;
     background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(148,148,148,1) 42%, rgb(240, 240, 240) 100%);
 }
 
@@ -10,10 +15,11 @@ html, body {
     position: absolute;
     height: 100vh;
     width: 100vw;
-    background: radial-gradient(circle at 70% 23%, rgb(235, 235, 231) 0%, rgb(255, 255, 255) 4%,  rgba(0, 0, 0, 0) 5%);
+    background: radial-gradient(circle at calc(var(--mouse-x)*100%) calc(var(--mouse-y)*100%),
+         rgb(235, 235, 231) 0%, rgb(255, 255, 255) 4%,  rgba(0, 0, 0, 0) 5%);
 }
 
-.main {
+.wall {
     position: absolute;
     top:  50%;
     left: 50%;
@@ -21,27 +27,36 @@ html, body {
     height: 50vh;
     width: 50vw;
 
-    /* border: 10px ridge #f00; */
-    padding: .5rem;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    flex-direction: column;
-    box-shadow: -5px 5px 5px black;
-    
-    vertical-align: middle;
+    flex-direction: column; */
+
+    /* vertical-align: middle; */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     text-align: center;
     color: rgb(255, 252, 214);
     letter-spacing: 0.3rem;
-    text-shadow: 1px 0px grey,
-    0px 1px grey,
-    1px 1px grey,
-    1px 2px grey,
-    2px 1px grey,
-    2px 2px grey,
-    -8vw 8vh 8px rgb(0 0 0 / 50%);
+    text-shadow: 
+        1px 0px grey,
+        0px 1px grey,
+        1px 1px grey,
+        1px 2px grey,
+        2px 1px grey,
+        2px 2px grey;
+
+}
+
+.floor {
+    z-index: -1000;
+    overflow: hidden;
+
+    box-shadow: -5px 5px 5px black;
     
-    background: radial-gradient(circle at 80% 18%, rgba(242, 255, 0, 0.664) 0%, rgba(0, 0, 212, 0.5) 40%, rgba(0, 0, 0, 0.9) 100%);
+    color: rgba(255, 252, 214, 0);
+    text-shadow: calc((0.5 - var(--mouse-x)) * 25vw) calc((0.5 - var(--mouse-y)) * 25vh) 
+        calc(((var(--mouse-x) - .5) * (var(--mouse-x) - .5) + (var(--mouse-y) - .5) * (var(--mouse-y) - .5) / .5) * 3rem) rgb(0 0 0 / 50%);
+    
+    background: radial-gradient(circle at calc(var(--mouse-x)*100%) calc(var(--mouse-y)*100%), rgba(242, 255, 0, 0.664) 0%, rgba(0, 0, 212, 0.5) 40%, rgba(0, 0, 0, 0.9) 100%);
 }
