@@ -48,6 +48,11 @@ body {
 
 }
 
+.wall div {
+    position: fixed;
+    transform: translate(-50%,-50%);
+}
+
 .floor {
     z-index: -1000;
     overflow: hidden;

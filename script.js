@@ -9,7 +9,6 @@ document.addEventListener('mousemove', evt => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    // let floor = document.getElementById('floor');
     let floor = wall.cloneNode(true);
     floor.id = 'floor';
     floor.classList.add('floor');
